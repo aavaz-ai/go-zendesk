@@ -1,5 +1,10 @@
 package zendesk
 
+const (
+	CredentialTypeBasic  = "basic"
+	CredentialTypeBearer = "bearer"
+)
+
 // Credential is interface of API credential
 type Credential interface {
 	Email() string
@@ -33,7 +38,7 @@ func (c BasicAuthCredential) Secret() string {
 
 // Type is accessor which returns the type
 func (c BasicAuthCredential) Type() string {
-	return "Basic"
+	return CredentialTypeBasic
 }
 
 // APITokenCredential is type of credential for API token authentication
@@ -62,7 +67,7 @@ func (c APITokenCredential) Secret() string {
 
 // Type is accessor which returns the type
 func (c APITokenCredential) Type() string {
-	return "API"
+	return CredentialTypeBasic
 }
 
 // BearerTokenCredential is type of credential for Bearer token authentication
@@ -89,5 +94,5 @@ func (c BearerTokenCredential) Secret() string {
 
 // Type is accessor which returns the type
 func (c BearerTokenCredential) Type() string {
-	return "Bearer"
+	return CredentialTypeBearer
 }

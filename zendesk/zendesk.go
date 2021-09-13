@@ -218,9 +218,9 @@ func (z *Client) prepareRequest(ctx context.Context, req *http.Request) *http.Re
 	z.includeHeaders(out)
 	if z.credential != nil {
 		switch z.credential.Type() {
-		case "Basic":
+		case CredentialTypeBasic:
 			out.SetBasicAuth(z.credential.Email(), z.credential.Secret())
-		case "Bearer":
+		case CredentialTypeBearer:
 			out.Header.Set("Authorization", "Bearer "+z.credential.Secret())
 		}
 	}
